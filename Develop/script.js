@@ -1,5 +1,10 @@
 // Assignment code here
 
+function getRandomLower () {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 97)
+}
+
+console.log(getRandomLower());
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -15,3 +20,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
