@@ -1,25 +1,4 @@
-// Assignment code here
-
-//define function for ensuring password length is between 8 and 125
-
-//do I use a loop to through this criteria?
-
-//need to create functions for confirms() to each question asked below
-
-//how to tie all of this to that button down there??
-
-//Need to accomplish character types based on password critera
-
-//add some logic for character types, am I going to allow all of one data type? All uppers, all lowers, etc?
-
-///////////////////////// Character Types /////////////////////////////////
-
-// seen someone do this on you tube, cool but once I write a function for each character type, I don't know how to
-// loop throught them and combine them..
-// var getRandomLower = function() {
-//  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-//}
-
+// Character Types //
 
 // With all criteria being TRUE
 // uppers, lowers, numeric, special chars, characterType1
@@ -75,56 +54,54 @@ var characterType11 = "abcdefghijklmnopqrstuvwxyz0123456789!#$%&()*+,-./:;<=>?@^
 
 // numeric, special chars, REPEAT DO NOT CODE FOR
 
+// Character Types - END //
 
 
 
-//////////////////////// serious of prompts for password criteria ///////////////////////////////
 
-var passwordCriteriaLengthPrompt = window.prompt("Enter the length of your password, must be between 8 and 125 characters.");
+// prompt for info function //
 
-// logic to control length of password, wasn't working
-// check line # line within function generatePassword()
-
-/*var promptForPasswordLength = function () {
+var promptForPasswordLength = function () {
+  var passwordCriteriaLengthPrompt = "";
+  //var passwordCriteriaLengthPrompt = parseInt(window.prompt("Enter the length of your password, must be between 8 and 125 characters."));
   var passwordCriteriaLengthPrompt = window.prompt("Enter the length of your password, must be between 8 and 125 characters.");
-  if (passwordCriteriaLengthPrompt.length > 125) {
+  if (passwordCriteriaLengthPrompt > 125) {
     window.prompt("You cannot enter a value that exceeds 125, please try again.");
+    promptForPasswordLength();
   } else if (passwordCriteriaLengthPrompt < 8) {
     window.prompt("You cannot enter a value that is less than 8, please try again.");
-  //} else if (passwordCriteriaLengthPrompt === String) {
-  //  window.prompt("Enter a valid number, please try again.");
-  } else {
-    window.prompt("Enter the length of your password, must be between 8 and 125 characters.");
+    promptForPasswordLength();
+  } else if (passwordCriteriaLengthPrompt === null) {
+    window.prompt("You must enter a valid number, please try again.");
+    promptForPasswordLength();
   }
+    return passwordCriteriaLengthPrompt;
+  }
+// need to remove this console log bc it prompts for password length BEFORE the button is pressed!
 console.log(promptForPasswordLength());
-};
 
-promptForPasswordLength();*/
-
-var passwordCriteriaUpperCase = window.confirm("Include uppercase letters in your password?");
-//add some logic if confirmed then add upper case letters to password
-console.log(passwordCriteriaUpperCase);
-
-var passwordCriteriaLowerCase = window.confirm("Include lowercase letters in your password?");
-//add some logic if confirmed then add lower case letters to password
-console.log(passwordCriteriaLowerCase);
-
-var passwordCriteriaNumeric = window.confirm("Include numbers in your password?");
-//add some logic if confirmed then add numbers to password
-console.log(passwordCriteriaNumeric);
-
-var passwordCriteriaSpeicalChars = window.confirm("Include special characters in your password?");
-//add some logic if confirmed then add special chars to password
-console.log(passwordCriteriaSpeicalChars);
+// prompt for info function - END //
 
 
-
-/////////////////////////////// generate password function //////////////////////////////////
-
+// generate password function //
 
 var generatePassword = function() {
   // setting the length based on the prompt
-  var length = passwordCriteriaLengthPrompt;
+  var length = promptForPasswordLength();
+
+  var passwordCriteriaUpperCase = window.confirm("Include uppercase letters in your password?");
+  //console.log(passwordCriteriaUpperCase);
+
+  var passwordCriteriaLowerCase = window.confirm("Include lowercase letters in your password?");
+  //console.log(passwordCriteriaLowerCase);
+
+  var passwordCriteriaNumeric = window.confirm("Include numbers in your password?");
+  //console.log(passwordCriteriaNumeric);
+
+  var passwordCriteriaSpeicalChars = window.confirm("Include special characters in your password?");
+  //console.log(passwordCriteriaSpeicalChars);
+
+  // calling the character types based on window prompts //
 
   // uppers, lowers, numeric, characterType1
   if (passwordCriteriaUpperCase === true && passwordCriteriaLowerCase === true && passwordCriteriaNumeric === true && passwordCriteriaSpeicalChars === true) {
@@ -216,26 +193,20 @@ var generatePassword = function() {
     }
     return retVal; 
   }
-    // lowers, numeric, special chars. characterType11
-    else if (passwordCriteriaUpperCase === false && passwordCriteriaLowerCase === true && passwordCriteriaNumeric === true && passwordCriteriaSpeicalChars === true) {
-      charset = characterType11;
-      retVal = "";
-      for (var i= 0, n = charset.length; i < length; ++i) {
-        retVal += charset.charAt(Math.floor(Math.random() * n));
-      }
-      return retVal; 
+  // lowers, numeric, special chars. characterType11
+  else if (passwordCriteriaUpperCase === false && passwordCriteriaLowerCase === true && passwordCriteriaNumeric === true && passwordCriteriaSpeicalChars === true) {
+    charset = characterType11;
+    retVal = "";
+    for (var i= 0, n = charset.length; i < length; ++i) {
+      retVal += charset.charAt(Math.floor(Math.random() * n));
     }
- 
+    return retVal; 
+  }
 }
-
-//generatePassword();
-//console.log(generatePassword());
+// generate password function - END //
 
 
-
-//////////////////////// starter code ///////////////////////////////
-
-// the button needs to trigger the prompts
+// starter code //
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -253,5 +224,5 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
-//////////////////////// END starter code ///////////////////////////////
+// starter code - END //
 
