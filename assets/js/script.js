@@ -54,6 +54,18 @@ var characterType11 = "abcdefghijklmnopqrstuvwxyz0123456789!#$%&()*+,-./:;<=>?@^
 
 // numeric, special chars, REPEAT DO NOT CODE FOR
 
+// uppers, characterType12
+var characterType12 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+// lowers, characterType13
+var characterType13 = "abcdefghijklmnopqrstuvwxyz";
+
+// numeric, characterType14
+var characterType14 = "0123456789";
+
+// special chars, characterType15
+var characterType15 = "!#$%&()*+,-./:;<=>?@^_{|}~";
+
 // Character Types - END //
 
 
@@ -76,7 +88,7 @@ var promptForPasswordLength = function () {
     return passwordCriteriaLengthPrompt;
   }
 // need to remove this console log bc it prompts for password length BEFORE the button is pressed!
-//console.log(promptForPasswordLength());
+console.log(promptForPasswordLength());
 
 // prompt for info function - END //
 
@@ -184,7 +196,7 @@ var generatePassword = function() {
     }
     return retVal; 
   }
-  // numeric, special chars. characterType10
+  // numeric, special chars, characterType10
   else if (passwordCriteriaUpperCase === false && passwordCriteriaLowerCase === false && passwordCriteriaNumeric === true && passwordCriteriaSpeicalChars === true) {
     charset = characterType10;
     retVal = "";
@@ -193,7 +205,7 @@ var generatePassword = function() {
     }
     return retVal; 
   }
-  // lowers, numeric, special chars. characterType11
+  // lowers, numeric, special chars, characterType11
   else if (passwordCriteriaUpperCase === false && passwordCriteriaLowerCase === true && passwordCriteriaNumeric === true && passwordCriteriaSpeicalChars === true) {
     charset = characterType11;
     retVal = "";
@@ -211,6 +223,42 @@ var generatePassword = function() {
     }
     return retVal;
   }
+  // uppers, characterType12
+  if (passwordCriteriaUpperCase === true && passwordCriteriaLowerCase === false && passwordCriteriaNumeric === false && passwordCriteriaSpeicalChars === false) {
+    charset = characterType12;
+    retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+      retVal += charset.charAt(Math.floor(Math.random() * n));
+     }
+     return retVal;
+   }
+  // lowers, characterType13
+  if (passwordCriteriaUpperCase === false && passwordCriteriaLowerCase === true && passwordCriteriaNumeric === false && passwordCriteriaSpeicalChars === false) {
+    charset = characterType13;
+    retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+      retVal += charset.charAt(Math.floor(Math.random() * n));
+     }
+     return retVal;
+   }
+  // numeric, characterType14
+  if (passwordCriteriaUpperCase === false && passwordCriteriaLowerCase === false && passwordCriteriaNumeric === true && passwordCriteriaSpeicalChars === false) {
+    charset = characterType14;
+    retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+      retVal += charset.charAt(Math.floor(Math.random() * n));
+     }
+     return retVal;
+   }
+  // special chars, characterType15
+  if (passwordCriteriaUpperCase === false && passwordCriteriaLowerCase === false && passwordCriteriaNumeric === false && passwordCriteriaSpeicalChars === true) {
+    charset = characterType15;
+    retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+      retVal += charset.charAt(Math.floor(Math.random() * n));
+     }
+     return retVal;
+   }
 }
 // generate password function - END //
 
