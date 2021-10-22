@@ -58,27 +58,25 @@ var characterType11 = "abcdefghijklmnopqrstuvwxyz0123456789!#$%&()*+,-./:;<=>?@^
 
 
 
-
 // prompt for info function //
 
 var promptForPasswordLength = function () {
   var passwordCriteriaLengthPrompt = "";
-  //var passwordCriteriaLengthPrompt = parseInt(window.prompt("Enter the length of your password, must be between 8 and 125 characters."));
-  var passwordCriteriaLengthPrompt = window.prompt("Enter the length of your password, must be between 8 and 125 characters.");
-  if (passwordCriteriaLengthPrompt > 125) {
-    window.prompt("You cannot enter a value that exceeds 125, please try again.");
+  var passwordCriteriaLengthPrompt = parseInt(window.prompt("Enter the length of your password, must be between 8 and 128 characters."));
+  if (passwordCriteriaLengthPrompt > 128) {
+    window.prompt("You cannot enter a value that exceeds 128, please try again.");
     promptForPasswordLength();
   } else if (passwordCriteriaLengthPrompt < 8) {
     window.prompt("You cannot enter a value that is less than 8, please try again.");
     promptForPasswordLength();
-  } else if (passwordCriteriaLengthPrompt === null) {
+  } else if (isNaN(passwordCriteriaLengthPrompt)) {
     window.prompt("You must enter a valid number, please try again.");
     promptForPasswordLength();
-  }
+  } 
     return passwordCriteriaLengthPrompt;
   }
 // need to remove this console log bc it prompts for password length BEFORE the button is pressed!
-console.log(promptForPasswordLength());
+//console.log(promptForPasswordLength());
 
 // prompt for info function - END //
 
@@ -101,7 +99,9 @@ var generatePassword = function() {
   var passwordCriteriaSpeicalChars = window.confirm("Include special characters in your password?");
   //console.log(passwordCriteriaSpeicalChars);
 
+
   // calling the character types based on window prompts //
+
 
   // uppers, lowers, numeric, characterType1
   if (passwordCriteriaUpperCase === true && passwordCriteriaLowerCase === true && passwordCriteriaNumeric === true && passwordCriteriaSpeicalChars === true) {
@@ -201,6 +201,15 @@ var generatePassword = function() {
       retVal += charset.charAt(Math.floor(Math.random() * n));
     }
     return retVal; 
+  }
+  // if all are false, characterType1
+  if (passwordCriteriaUpperCase === false && passwordCriteriaLowerCase === false && passwordCriteriaNumeric === false && passwordCriteriaSpeicalChars === false) {
+   charset = characterType1;
+   retVal = "";
+   for (var i = 0, n = charset.length; i < length; ++i) {
+     retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    return retVal;
   }
 }
 // generate password function - END //
