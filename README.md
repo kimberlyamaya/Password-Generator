@@ -1,6 +1,6 @@
 # Password Generator Starter Code
 
-**Description**  
+**Description**   
 This is a password generator that will provide a password in the length the user determines and include the character types the user decides to include. The length of the password is limited to be between 8 and 128 characters. The user is prompted if they would like to include upper case letters, lower case letters, numbers and/or special characters. Once the user answers each prompt they will be given a unique password on the screen that is tailored to their responses, which they can copy and use where they need to. 
 
 **Website Layout**
