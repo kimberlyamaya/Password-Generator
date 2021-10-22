@@ -88,7 +88,7 @@ var promptForPasswordLength = function () {
     return passwordCriteriaLengthPrompt;
   }
 // need to remove this console log bc it prompts for password length BEFORE the button is pressed!
-console.log(promptForPasswordLength());
+//console.log(promptForPasswordLength());
 
 // prompt for info function - END //
 
